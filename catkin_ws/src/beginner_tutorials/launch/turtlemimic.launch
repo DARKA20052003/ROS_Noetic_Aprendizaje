@@ -1,0 +1,19 @@
+<launch>
+<!-- Se inician 2 grupos con una etiqueta namespace "turtlesim"
+     cada uno con un nodo con el mismo nombre "sim" para no tener
+     conflictos de nombres.-->
+    <group ns="turtlesim1">
+        <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+    </group>
+
+    <group ns="turtlesim2">
+        <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+    </group>
+<!-- Aquí inicia el nodo mimic con el topic "input" y "output"
+     renombrado a turtlesim1 y turtlesim2, el renombramiento causa
+     que turtlesim2 imite a turtlesim1.-->
+    <node pkg="turtlesim" name="mimic" type="mimic">
+        <remap from="input" to="turtlesim1/turtle1"/>
+        <remap from="output" to="turtlesim2/turtle1"/>
+    </node>
+</launch>
