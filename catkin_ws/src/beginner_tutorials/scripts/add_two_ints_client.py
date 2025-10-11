@@ -15,8 +15,8 @@ def add_two_ints_client(x, y):
     except rospy.ServiceException as e:
         print("Service call failed: %s"%e)
 
-    def usage():
-        return "%s [x y]"%sys.argv[0]
+def usage():
+    return "%s [x y]"%sys.argv[0]
 if __name__ == "__main__":
     if len(sys.argv) == 3:
         x = int(sys.argv[1])
